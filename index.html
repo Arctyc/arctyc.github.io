@@ -1,0 +1,125 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visit Taniti</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="topbar">
+            <div class="page-title">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" alt="Visit Taniti website logo">
+                    </a>
+                </div>
+                <div class="title">
+                    Welcome to Taniti, your tropical vacation paradise!
+                </div>
+            </div>
+            <div class="menu">
+                <div id="menu-links">
+                    <a href="activities.html">Activities</a>
+                    <a href="booking.html">Booking</a>
+                    <a href="destinations.html">Destinations</a>
+                    <a href="travel.html">Travel</a>
+                </div>
+                <a href="javascript:void(0);" class="icon" onClick="expandHambuger()">
+                    <i class="burger"></i>
+                </a>
+            </div>
+        </div>
+    </header>    
+
+    <!-- Banner -->
+    <img src="images/banner.png" alt="Visit Taniti website banner" width="100%" />
+
+    <main>
+        <div class="booking-row">
+            <div class="highlights">
+                <!-- Scrolling Activity Highlights -->
+                <img src="images/highlights.png" alt="Scrolling photos of island activity highlights." width="100"/>
+            </div>
+            <!-- Booking Tool-->
+            <div class="booking">
+                <div class="booking-header">
+                    Book your dream vacation today!
+                </div>
+                <!-- Tool input fields -->
+                <div class="booking-lookup">
+                    <form class="booking-form">
+                        <div class="booking-field">
+                            <label for="depart">Depart:</label>
+                            <input type="date" id="depart" name="depart" />
+                        </div>
+                        <div class="booking-field">
+                            <label for="return">Return:</label>
+                            <input type="date" id="return" name="return" />
+                        </div>
+                        <div class="booking-field">
+                            <label for="guests">Guests:</label>
+                            <input type="number" id="guests" name="guests" value="1" />
+                        </div>
+                    </form>
+                </div>
+                <div class="booking-button">
+                    <!-- Search/Book button-->
+                    <button onclick="alert('Booking search button clicked')">🔍 Explore</button>
+                </div>
+            </div>            
+        </div>
+        
+        <!-- Activities, Destinations, Accomodations Grid -->
+        <div class="grid">
+            <div class="grid-item">
+                <!-- Activities Photo -->
+                <img src="images/activities.png" alt="Photo representing activities available on the island." width="100"/>
+                <!-- Activities Text -->
+                <div class="grid-text">
+                    <h3>Activities</h3>
+                    <p>Activities blurb asldkjfa;lsdkjf asdfasdfasf as;kdhfiuhyhew asldkjfhalkjehfas alskdjhfelaksjdhf.
+                        This is some more sample text to increase the length of this grid item blah blah blah.</p>
+                    <a href="activities.html">Learn more →</a>
+                </div>          
+            </div>
+
+            <div class="grid-item">
+                <!-- Destinations Photo -->
+                <img src="images/destinations.png" alt="Photo representing destinations on the island." width="100"/>
+                </a>
+                <!-- Destinations Text -->
+                <div class="grid-text">
+                    <h3>Destinations</h3>
+                    <p>Destinations blurb asldkjfa;lsdkjf asdfasdfasf as;kdhfiuhyhew asldkjfhalkjehfas alskdjhfelaksjdhf.
+                        This is some more sample text to increase the length of this grid item blah blah blah..</p>
+                    <a href="destinations.html">Learn more →</a>
+                </div>            
+            </div>
+
+            <div class="grid-item">
+                <!-- Travel & Accomodations Photo -->
+                <img src="images/travel.png" alt="Photo representing travel options to and around the island." width="100"/>
+                </a>
+                <!-- Travel & Accomodations Text -->
+                <div class="grid-text">
+                    <h3>Travel & Accomodations</h3>
+                    <p>Travel & Accomodations blurb asldkjfa;lsdkjf asdfasdfasf as;kdhfiuhyhew asldkjfhalkjehfas alskdjhfelaksjdhf.
+                        This is some more sample text to increase the length of this grid item blah blah blah..</p>
+                    <a href="travel.html">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+     <div class="footer">
+        <p class="footer-text">©2025 Visit Taniti. All rights reserved.</p>
+     </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
