@@ -56,8 +56,6 @@
                             <option value="cruise">Cruise</option>
                         </select>
                     </div>
-                </div>
-                <div class="booking-row-inputs">
                     <div class="booking-field">
                         <label for="depart">Depart:</label>
                         <input type="date" id="depart" name="depart" />
@@ -74,18 +72,147 @@
             </form>
         </div>
         <div class="booking-button">
-            <button onclick="alert('Booking search button clicked')">🔍 Explore</button>
+            <button onclick="showResults()">🔍 Explore</button>
         </div>
     </div>
 
-    <div class="booking-table">
+    <div class="booking-table-container">
         <main>
-            <p>
                 <!-- Booking Table -->
-                faux booking table here
-            </p>
+                <div class="booking-results">
+                    <div class="booking-table-header">
+                        <h2>Travel Results</h2>
+                        <div class="results-found">
+                            <p>3 options found</p>
+                        </div>
+                    </div>
+
+                    <table class="booking-table">
+                        <thead>
+                            <tr>
+                                <th>Carrier</th>
+                                <th>Departure</th>
+                                <th>Arrival</th>
+                                <th>Duration</th>
+                                <th>Stops</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Result 1 -->
+                            <tr onclick="selectTrip(this)">
+                                <td>
+                                    <div class="carrier-info">
+                                        <div class="carrier-name-short">TA</div>
+                                        <div class="carrier-name-long">Taniti Air</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="departure-arrival">
+                                        <div class="time">8:15 AM</div>
+                                        <div class="city-name">Your Location</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="departure-arrival">
+                                        <div class="time">2:00 PM</div>
+                                        <div class="city-name">Taniti</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="duration">5h 45m</div>
+                                </td>
+                                <td>
+                                    <div class="stops">1 stop</div>
+                                </td>
+                                <td>
+                                    <div class="price">$300
+                                        <span class="price-per-person">per person</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="select-button" onclick="alert('Booking select button clicked')">Select</button>
+                                </td>
+                            </tr>
+
+                            <!-- Result 2 -->
+                            <tr onclick="selectTrip(this)">
+                                <td>
+                                    <div class="carrier-info">
+                                        <div class="carrier-name-short">TA</div>
+                                        <div class="carrier-name-long">Taniti Air</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="departure-arrival">
+                                        <div class="time">10:15 AM</div>
+                                        <div class="city-name">Your Location</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="departure-arrival">
+                                        <div class="time">4:00 PM</div>
+                                        <div class="city-name">Taniti</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="duration">5h 45m</div>
+                                </td>
+                                <td>
+                                    <div class="stops">1 stop</div>
+                                </td>
+                                <td>
+                                    <div class="price">$295
+                                        <span class="price-per-person">per person</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="select-button" onclick="alert('Booking select button clicked')">Select</button>
+                                </td>
+                            </tr>
+
+                            <!-- Result 3 -->
+                            <tr onclick="selectTrip(this)">
+                                <td>
+                                    <div class="carrier-info">
+                                        <div class="carrier-name-short">TA</div>
+                                        <div class="carrier-name-long">Taniti Air</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="departure-arrival">
+                                        <div class="time">12:15 PM</div>
+                                        <div class="city-name">Your Location</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="departure-arrival">
+                                        <div class="time">6:00 PM</div>
+                                        <div class="city-name">Taniti</div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="duration">5h 45m</div>
+                                </td>
+                                <td>
+                                    <div class="stops">1 stop</div>
+                                </td>
+                                <td>
+                                    <div class="price">$320
+                                        <span class="price-per-person">per person</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="select-button" onclick="alert('Booking select button clicked')">Select</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
         </main>
     </div>
+
     <!-- Footer -->
     <div class="footer">
         <p class="footer-text">©2025 Visit Taniti. All rights reserved.</p>

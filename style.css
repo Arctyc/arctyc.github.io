@@ -39,6 +39,8 @@ header {
     text-align: left;
 }
 
+/* Menu */
+
 .menu {
     display:flex;
     align-items: center;
@@ -77,7 +79,7 @@ header {
     align-items: center;
 }
 
-/*HAMBURGER*/
+/* Hamburer Menu */
 
 .icon {
     display: none;
@@ -121,7 +123,7 @@ header {
     transform: translateY(5px); /* Move bottom line further down */
 }
 
-/*END HAMBURGER*/
+/* Common */
 
 html, body {
     height: 100%;
@@ -144,6 +146,11 @@ main {
 main > * {
     padding-left: 60px;
     padding-right: 60px;
+}
+
+.booking-page main > * {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .description {
@@ -170,6 +177,8 @@ button:hover {
     max-height: 100%;
     object-fit: contain;
 }
+
+/* Booking */
 
 .booking {
     flex-shrink: 0;
@@ -276,6 +285,8 @@ select {
     padding: 5px;
 }
 
+/* Grid */
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -317,9 +328,149 @@ select {
     width: 400px;
 }
 
-.booking-table {
-    align-self: center;
+.destinations-page .grid-item .grid-text p {
+    width: 400px;
 }
+
+.travel-page .grid-item .grid-text p {
+    width: 400px;
+}
+
+/* Booking Table */
+
+.booking-table-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.booking-results {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.booking-table-header {
+    background-color: #98cfcc;
+    padding: 20px;
+    border-bottom: 2px solid coral;
+}
+
+.booking-table-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.booking-table th {
+    background-color: #f8f9fa;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.booking-table td {
+    padding: 20px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.booking-table tr:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+
+.carrier-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.carrier-name-short {
+    width: 40px;
+    height: 40px;
+    background-color: coral;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.carrier-name-long {
+    font-weight: 500;
+}
+
+.time {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.duration {
+    color: #666;
+    font-size: 14px;
+}
+
+.stops {
+    color: #666;
+    font-size: 14px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2d5a3d;
+}
+
+.price-per-person {
+    font-size: 12px;
+    color: #666;
+    display: block;
+}
+
+.book-button {
+    background-color: coral;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-button:hover {
+    background-color: rgb(187, 107, 77);
+}
+
+.city-name {
+    font-size: 12px;
+    color: #666;
+}
+
+.departure-arrival {
+    text-align: center;
+}
+
+.booking-results tbody tr, .results-found {
+    display: none;
+}
+
+/* Footer */
 
 .footer {
     background-color: grey;
@@ -330,6 +481,7 @@ select {
     width: 100%;
 }
 
+/* Screen Size Adjustments */
 
 @media (max-width: 1280px) {
     
@@ -380,5 +532,18 @@ select {
 @media (max-width: 768px) {
     .booking-form {
         flex-direction: column;
+    }
+
+    .booking-table {
+        font-size: 14px;
+    }
+
+    .results-table th, .results-table td {
+        padding: 10px 8px;
+    }
+
+    .carrier-info {
+        flex-direction: column;
+        gap: 5px;
     }
 }

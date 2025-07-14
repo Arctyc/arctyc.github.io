@@ -35,3 +35,63 @@ document.getElementById('depart').addEventListener('change', function() {
         returnInput.value = '';
     }
 });
+
+// Show booking table results
+function showResults() {
+    
+    // Get travel method
+    const travelMethod = document.getElementById('travel-method').value;
+
+    // Change carrier
+    let carrierShort, carrierLong;
+    if (travelMethod === 'cruise') {
+        carrierShort = 'TC';
+        carrierLong = 'Taniti Cruise';
+    } else {
+        carrierShort = 'TA';
+        carrierLong = 'Taniti Air';
+    }
+    
+    // Unhide results-found
+    const rows = document.querySelectorAll('.booking-results tbody tr');
+    document.querySelector('.results-found').style.display = 'block';
+
+    // Show/hide rows based on travel method
+    if (travelMethod === 'cruise') {
+        // Show only the first row for cruise
+        rows[0].style.display = 'table-row';
+        rows[1].style.display = 'none';
+        rows[2].style.display = 'none';
+    
+        // Update results
+        document.querySelector('.results-found p').textContent = '1 option found';
+
+    } else {
+        // Show all rows for air
+        rows.forEach(row => row.style.display = 'table-row');
+        
+        // Update results count
+        document.querySelector('.results-found p').textContent = '3 options found';
+    }
+    
+    // Update from input
+    const fromCity = document.getElementById('from').value || 'Your Location';
+    const departureCities = document.querySelectorAll('.booking-results .city-name');
+    departureCities.forEach(city => {
+        if (city.textContent === 'Your Location') {
+            city.textContent = fromCity;
+        }
+    });
+
+    // Update carrier information
+    const carrierShortElements = document.querySelectorAll('.carrier-name-short');
+    const carrierLongElements = document.querySelectorAll('.carrier-name-long');
+    
+    carrierShortElements.forEach(element => {
+        element.textContent = carrierShort;
+    });
+    
+    carrierLongElements.forEach(element => {
+        element.textContent = carrierLong;
+    });
+}
