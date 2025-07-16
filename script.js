@@ -18,6 +18,22 @@ document.addEventListener('click', function(event) {
     }
 });
 
+//Scrolling images
+let currentImageIndex = 0;
+const images = document.querySelectorAll('.highlights img');
+
+function showNextImage() {
+    images[currentImageIndex].classList.remove('active');
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    images[currentImageIndex].classList.add('active');
+}
+
+if (images.length > 0) {
+    images[0].classList.add('active');
+    setInterval(showNextImage, 3000);
+}
+
+
 //Set booking min depart to today
 document.getElementById('depart').min = new Date().toISOString().split('T')[0];
 
@@ -93,5 +109,70 @@ function showResults() {
     
     carrierLongElements.forEach(element => {
         element.textContent = carrierLong;
+    });
+}
+
+
+// Booking table filtering
+let currentSort = { column: -1, direction: 'asc' };
+
+function sortTable(columnIndex) {
+    const table = document.querySelector('.booking-table tbody');
+    const rows = Array.from(table.querySelectorAll('tr')).filter(row => row.style.display !== 'none');
+    
+    // Toggle sort direction
+    if (currentSort.column === columnIndex) {
+        currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+        currentSort.direction = 'asc';
+    }
+    currentSort.column = columnIndex;
+    
+    rows.sort((a, b) => {
+        let aValue = a.cells[columnIndex].textContent.trim();
+        let bValue = b.cells[columnIndex].textContent.trim();
+        
+        // Handle price sorting (extract number)
+        if (columnIndex === 5) {
+            aValue = parseInt(aValue.replace(/[^0-9]/g, ''));
+            bValue = parseInt(bValue.replace(/[^0-9]/g, ''));
+        }
+        
+        // Handle time sorting (convert to minutes)
+        if (columnIndex === 1 || columnIndex === 2) {
+            aValue = timeToMinutes(aValue.split('\n')[0]);
+            bValue = timeToMinutes(bValue.split('\n')[0]);
+        }
+        
+        if (aValue < bValue) return currentSort.direction === 'asc' ? -1 : 1;
+        if (aValue > bValue) return currentSort.direction === 'asc' ? 1 : -1;
+        return 0;
+    });
+    
+    // Re-append sorted rows
+    rows.forEach(row => table.appendChild(row));
+    
+    // Update header indicators
+    updateSortIndicators(columnIndex);
+}
+
+function timeToMinutes(timeStr) {
+    const [time, period] = timeStr.split(' ');
+    const [hours, minutes] = time.split(':').map(Number);
+    let totalMinutes = hours * 60 + minutes;
+    if (period === 'PM' && hours !== 12) totalMinutes += 12 * 60;
+    if (period === 'AM' && hours === 12) totalMinutes -= 12 * 60;
+    return totalMinutes;
+}
+
+function updateSortIndicators(activeColumn) {
+    const headers = document.querySelectorAll('.booking-table th');
+    headers.forEach((header, index) => {
+        if (index === activeColumn) {
+            header.textContent = header.textContent.replace(/[↕↑↓]/g, '') + 
+                (currentSort.direction === 'asc' ? ' ↑' : ' ↓');
+        } else if (index < headers.length - 1) {
+            header.textContent = header.textContent.replace(/[↕↑↓]/g, '') + ' ↕';
+        }
     });
 }
