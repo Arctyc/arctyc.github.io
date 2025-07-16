@@ -332,6 +332,16 @@ select {
     height: auto;
 }
 
+.destinations-page .grid-item img {
+    width: 350px;
+    height: auto;
+}
+
+.travel-page .grid-item img {
+    width: 350px;
+    height: auto;
+}
+
 .grid-item .grid-text h3 {
     margin: 0 0 5px;
     font-size: 22px;
