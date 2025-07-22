@@ -517,6 +517,15 @@ select {
     display: none;
 }
 
+
+.faq {
+    padding-top: 60px;
+}
+
+.faq p {
+    
+}
+
 /* Footer */
 
 .footer {
