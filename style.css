@@ -518,12 +518,8 @@ select {
 }
 
 
-.faq {
-    padding-top: 60px;
-}
-
-.faq p {
-    
+.faq h5 {
+    margin-bottom: -5px;
 }
 
 /* Footer */
