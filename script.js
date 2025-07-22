@@ -34,13 +34,13 @@ if (images.length > 0) {
 }
 
 
-//Set booking min depart to today
+// Set booking min depart to today
 document.getElementById('depart').min = new Date().toISOString().split('T')[0];
 
-//Set booking min return (default) to today
+// Set booking min return to today
 document.getElementById('return').min = new Date().toISOString().split('T')[0];
 
-//Set booking min return to depart
+// Set booking min return to depart
 document.getElementById('depart').addEventListener('change', function() {
     const departDate = this.value;
     const returnInput = document.getElementById('return');
@@ -68,13 +68,13 @@ function showResults() {
         carrierLong = 'Taniti Air';
     }
     
-    // Unhide results-found
+    // Unhide results
     const rows = document.querySelectorAll('.booking-results tbody tr');
     document.querySelector('.results-found').style.display = 'block';
 
     // Show/hide rows based on travel method
     if (travelMethod === 'cruise') {
-        // Show only the first row for cruise
+        // Show cruise row
         rows[0].style.display = 'table-row';
         rows[1].style.display = 'none';
         rows[2].style.display = 'none';
@@ -83,7 +83,7 @@ function showResults() {
         document.querySelector('.results-found p').textContent = '1 option found';
 
     } else {
-        // Show all rows for air
+        // Show air rows
         rows.forEach(row => row.style.display = 'table-row');
         
         // Update results count
@@ -132,13 +132,13 @@ function sortTable(columnIndex) {
         let aValue = a.cells[columnIndex].textContent.trim();
         let bValue = b.cells[columnIndex].textContent.trim();
         
-        // Handle price sorting (extract number)
+        // Price sorting
         if (columnIndex === 5) {
             aValue = parseInt(aValue.replace(/[^0-9]/g, ''));
             bValue = parseInt(bValue.replace(/[^0-9]/g, ''));
         }
         
-        // Handle time sorting (convert to minutes)
+        // Time sorting
         if (columnIndex === 1 || columnIndex === 2) {
             aValue = timeToMinutes(aValue.split('\n')[0]);
             bValue = timeToMinutes(bValue.split('\n')[0]);
@@ -149,10 +149,9 @@ function sortTable(columnIndex) {
         return 0;
     });
     
-    // Re-append sorted rows
+    // Append rows
     rows.forEach(row => table.appendChild(row));
-    
-    // Update header indicators
+
     updateSortIndicators(columnIndex);
 }
 
@@ -176,3 +175,42 @@ function updateSortIndicators(activeColumn) {
         }
     });
 }
+
+// Transfer index booking values to booking page
+const indexButton = document.getElementById('indexBookingButton');
+    if (indexButton) {
+        indexButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+        // Get values
+        const departDate = encodeURIComponent(document.getElementById('depart').value);
+        const returnDate = encodeURIComponent(document.getElementById('return').value);
+        const guests = encodeURIComponent(document.getElementById('guests').value);
+
+        // Build URL
+        const url = `booking.html?departDate=${departDate}&returnDate=${returnDate}&guests=${guests}`;
+
+        // Redirect to booking page with parameters
+        window.location.href = url;
+    });
+}
+// Load results with values from index
+function getQueryParams() {
+
+    const params = {};
+    location.search.substring(1).split('&').forEach(pair => {
+        const [key, value] = pair.split('=');
+        if (key) params[decodeURIComponent(key)] = decodeURIComponent(value || '');
+        });
+    return params;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const params = getQueryParams();
+
+    if (params.departDate) document.getElementById('depart').value = params.departDate;
+    if (params.returnDate) document.getElementById('return').value = params.returnDate;
+    if (params.guests) document.getElementById('guests').value = params.guests;
+
+    showResults();
+});
