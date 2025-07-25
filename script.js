@@ -1,4 +1,4 @@
-//Hamburger menu functionality
+// Hamburger menu functionality
 function expandHambuger() {
     const menuLinks = document.getElementById('menu-links');
     const burger = document.querySelector('.burger');
@@ -18,7 +18,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
-//Scrolling images
+// Scrolling images
 let currentImageIndex = 0;
 const images = document.querySelectorAll('.highlights img');
 
@@ -113,7 +113,7 @@ function showResults() {
 }
 
 
-// Booking table filtering
+// Booking table sorting
 let currentSort = { column: -1, direction: 'asc' };
 
 function sortTable(columnIndex) {
@@ -155,6 +155,7 @@ function sortTable(columnIndex) {
     updateSortIndicators(columnIndex);
 }
 
+// standardize time for sorting
 function timeToMinutes(timeStr) {
     const [time, period] = timeStr.split(' ');
     const [hours, minutes] = time.split(':').map(Number);
@@ -164,6 +165,7 @@ function timeToMinutes(timeStr) {
     return totalMinutes;
 }
 
+// Update arrows based on sort direction
 function updateSortIndicators(activeColumn) {
     const headers = document.querySelectorAll('.booking-table th');
     headers.forEach((header, index) => {
