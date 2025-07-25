@@ -185,12 +185,13 @@ const indexButton = document.getElementById('indexBookingButton');
             event.preventDefault();
 
         // Get values
+        const fromCity = encodeURIComponent(document.getElementById('from').value);
         const departDate = encodeURIComponent(document.getElementById('depart').value);
         const returnDate = encodeURIComponent(document.getElementById('return').value);
         const guests = encodeURIComponent(document.getElementById('guests').value);
 
         // Build URL
-        const url = `booking.html?departDate=${departDate}&returnDate=${returnDate}&guests=${guests}`;
+        const url = `booking.html?fromCity=${fromCity}&departDate=${departDate}&returnDate=${returnDate}&guests=${guests}`;
 
         // Redirect to booking page with parameters
         window.location.href = url;
@@ -210,6 +211,7 @@ function getQueryParams() {
 window.addEventListener('DOMContentLoaded', () => {
     const params = getQueryParams();
 
+    if (params.fromCity) document.getElementById('from').value = params.fromCity;
     if (params.departDate) document.getElementById('depart').value = params.departDate;
     if (params.returnDate) document.getElementById('return').value = params.returnDate;
     if (params.guests) document.getElementById('guests').value = params.guests;
