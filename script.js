@@ -212,5 +212,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (params.returnDate) document.getElementById('return').value = params.returnDate;
     if (params.guests) document.getElementById('guests').value = params.guests;
 
-    showResults();
+    if (document.referrer.includes('index.html') && params.guests > 0) {
+        showResults();
+    }
 });
